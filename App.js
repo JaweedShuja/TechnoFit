@@ -4,42 +4,27 @@ import {
     StyleSheet,
     Text,
     Image,
-    ScrollView,
     TouchableOpacity,
-    Dimensions
+    ScrollView
  } from 'react-native'
- import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-  } from "react-native-chart-kit";
-  const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    dataset: [
-      {
-        data: [20, 45, 28, 80, 99, 43],
-        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-        strokeWidth: 2 // optional
-      }
-    ],
-    legend: ["Rainy Days", "Sunny Days", "Snowy Days"] // optional
-  };
-  const chartConfig = {
-    backgroundGradientFrom: "#1E2923",
-    backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#08130D",
-    backgroundGradientToOpacity: 0.5,
-    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
-    barPercentage: 0.5,
-    useShadowColorFromDataset: false // optional
-  };
+ import { LineChart, Grid } from 'react-native-svg-charts'
+ import * as shape from 'd3-shape'
+import ProgressCircle from 'react-native-progress-circle'
+import MySwiper from 'react-native-swiper'
+
+
  
+
 class App extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+
+        }
+    }
    render() {
+      
+ 
        return (
         <View style={styles.container}> 
         {/* header */}
@@ -47,108 +32,182 @@ class App extends Component {
                 style={{
                     flex:1, 
                     alignItems:'center', 
-                    flexDirection:'row'
+                    flexDirection:'row',
+                    backgroundColor:'white'
                 }}>
-                <Image
-                    style={{
-                        height:40,
-                        width:40,
-
-                    }}
-                    source={require('./src/images/backIcon.png')}
-                
-                />
                 <Text style={{
                     color:'#44474f',
-                    fontSize:30,
+                    fontSize:25,
                     fontWeight:'bold', 
                     marginLeft:15,
                 }}>
-                    Statistics
+                    Training
 
                 </Text>
+
+                <TouchableOpacity style={{
+                    position:'absolute',
+                    right:50
+                }}>
+                    <Image
+                        style={{
+                            height:25, 
+                            width:25, 
+                        }}
+                        source={require('./src/images/search.png')}
+                    />  
+                </TouchableOpacity>
+                    <TouchableOpacity style={{ position:'absolute',
+                    right:10}}>
+                    <Image
+                    style={{
+                        height:25, 
+                        width:25, 
+                    
+                    }}
+                    source={require('./src/images/drawer.png')}
+                    />
+                </TouchableOpacity>
                
 
             </View>
            
             <View style={{flex:8, paddingBottom:10, marginHorizontal:5}}>
-                <View 
+               
+                <View
                     style={{
-                        flex:6, 
-
+                        height:50,
+                        backgroundColor:'white',
+                        flexDirection:'row',
                     }}
                 >
-                    <View style={{
-                        flexDirection:'row',
-                        alignItems:'center',
-                    }}>
-                        <Text
+
+                    <View
                         style={{
-                            fontWeight:'bold',
-                            fontSize:16,
-                            marginLeft:'5%',
+                            flex:1,
+                            alignItems:'center',
+                            justifyContent:'center',
+                            borderBottomWidth:2,
+                            borderColor:'#ff723c'
                         }}
-                    >Heart Rate</Text>
-
-                    <View style={{
-                        height:35,
-                        width:35,
-                        backgroundColor:'black',
-                        position:'absolute',
-                        right:'5%',
-                        borderRadius:70,
-                        alignItems:'center',
-                        justifyContent:'center'
-                    }}>
-                         <Image
+                    >
+                        <Text
                             style={{
-                                height:20,
-                                width:20,
+                                fontSize:17,
+                                fontWeight:'bold',
                             }}
-                            source={require('./src/images/heartIcon.png')}
+                        >
+                            Skilled
 
-                        />
+
+                        </Text>
 
                     </View>
+
+                    <View
+                        style={{
+                            flex:1,
+                            alignItems:'center',
+                            justifyContent:'center',
+                            borderBottomWidth:2,
+                            borderColor:'white'
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize:17,
+                                fontWeight:'bold',
+                            }}
+                        >
+                            Beginnar
+
+
+                        </Text>
+
+                    </View>
+                    <View
+                        style={{
+                            flex:1,
+                            alignItems:'center',
+                            justifyContent:'center',
+                            borderBottomWidth:2,
+                            borderColor:'white'
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize:17,
+                                fontWeight:'bold',
+                            }}
+                        >
+                            Master
+
+
+                        </Text>
 
                     </View>
                     
-                    <View style={{
-                        height:'80%',
-                        width:'90%',
-                        backgroundColor:'white',
-                        borderRadius:10, 
-                        position:'absolute',
-                        bottom:10, 
-                        alignSelf:'center',
-
-
-                    }}>
-                        <LineChart
-  data={data}
-  width={200}
-  height={256}
-  verticalLabelRotation={30}
-  chartConfig={chartConfig}
-  bezier
-/>
-
-                       
-
-                    </View>
-
                 </View>
 
-                <View 
+                <View
                     style={{
-                        flex:4, backgroundColor:'green'
+                        height:'100%',
                     }}
                 >
+                    <View
+                        style={{
+                            flex:1,
+                            backgroundColor:'white'
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize:16,
+                                fontWeight:'bold',
+                                margin:10
+                            }}
+                        >
+                            Most Popular Trainings
+                        </Text>
 
+                        <ScrollView
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                        >
+
+                            <View 
+                                style={{
+                                    width:160,
+                                    height:'100%',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        height:'60%',
+                                        width:145,
+                                        backgroundColor:'white',
+                                        borderRadius:10,
+                                        alignSelf:'center',
+                                    }}
+                                >
+
+                                </View>
+
+                            </View>
+
+                        </ScrollView>
+
+                    </View>
+                    <View
+                        style={{
+                            flex:1,
+                            backgroundColor:'red'
+                        }}
+                    >
+
+                    </View>
+                    
                 </View>
-
-                
-
 
             </View>
             <View style={{flex:1, backgroundColor:'white'}}>
