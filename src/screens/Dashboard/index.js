@@ -18,7 +18,7 @@ class App extends Component {
         {/* header */}
             <View 
                 style={{
-                    flex:1.5, 
+                    flex:1, 
                     alignItems:'center', 
                     flexDirection:'row'
                 }}>
