@@ -260,7 +260,7 @@ class App extends Component {
                                         style={{
                                             marginLeft:10,
                                             color:'gray'
-                                        }}   >
+                                        }}   >      
                                         120 Hours
                                     </Text>
                             </View>
