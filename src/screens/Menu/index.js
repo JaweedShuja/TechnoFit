@@ -13,6 +13,9 @@ import {
  
 
 class App extends Component {
+    static navigationOptions = {
+        headerShown:null
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -54,7 +57,7 @@ class App extends Component {
                         style={{
                             height:20, width:20, marginLeft:20
                         }}
-                        source={require('./src/images/dashboardIcon.png')}
+                        source={require('../../images/dashboardIcon.png')}
 
 
                       />
@@ -165,7 +168,7 @@ class App extends Component {
                             height:30,
                             width:30,
                         }}
-                        source={require('./src/images/dashboardIcon.png')}
+                        source={require('../../images/dashboardIcon.png')}
 
 
                     />
@@ -176,7 +179,7 @@ class App extends Component {
                         height:30,
                         width:30,
                     }}
-                    source={require('./src/images/signalIcon.png')}
+                    source={require('../../images/signalIcon.png')}
 
 
                     />
@@ -200,7 +203,7 @@ class App extends Component {
                         height:30,
                         width:30,
                     }}
-                    source={require('./src/images/dumbellIcon.png')}
+                    source={require('../../images/dumbellIcon.png')}
 
 
                     />
@@ -211,7 +214,7 @@ class App extends Component {
                             height:30,
                             width:30,
                         }}
-                        source={require('./src/images/signalIcon.png')}
+                        source={require('../../images/signalIcon.png')}
 
 
                     />

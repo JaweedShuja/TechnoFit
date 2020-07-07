@@ -14,6 +14,9 @@ import ProgressCircle from 'react-native-progress-circle'
  
 
 class App extends Component {
+    static navigationOptions = {
+        headerShown: null
+    }
    render() {
         const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
  
@@ -26,15 +29,19 @@ class App extends Component {
                     alignItems:'center', 
                     flexDirection:'row'
                 }}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.goBack()}
+                    >
                 <Image
                     style={{
                         height:40,
                         width:40,
 
                     }}
-                    source={require('./src/images/backIcon.png')}
+                    source={require('../../images/backIcon.png')}
                 
                 />
+                </TouchableOpacity>
                 <Text style={{
                     color:'#44474f',
                     fontSize:30,
@@ -82,7 +89,7 @@ class App extends Component {
                                 height:20,
                                 width:20,
                             }}
-                            source={require('./src/images/heartIcon.png')}
+                            source={require('../../images/heartIcon.png')}
 
                         />
 
@@ -279,7 +286,7 @@ class App extends Component {
                                             width:15, 
                                             height:15
                                         }}
-                                        source={require('./src/images/Shoe.png')}
+                                        source={require('../../images/Shoe.png')}
 
                                     />
                                     
@@ -378,7 +385,7 @@ class App extends Component {
                                             width:15, 
                                             height:15
                                         }}
-                                        source={require('./src/images/waterDrop.png')}
+                                        source={require('../../images/waterDrop.png')}
 
                                     />
                                     
@@ -575,7 +582,7 @@ class App extends Component {
                                             width:15, 
                                             height:15
                                         }}
-                                        source={require('./src/images/moon.png')}
+                                        source={require('../../images/moon.png')}
 
                                     />
                                     
@@ -628,25 +635,32 @@ class App extends Component {
                     justifyContent:'space-around'
 
                 }}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Dashboard')}
 
+                    >
+
+                    
                     <Image
 
                         style={{
                             height:30,
                             width:30,
                         }}
-                        source={require('./src/images/dashboardIcon.png')}
+                        source={require('../../images/dashboardIcon.png')}
 
 
                     />
+                    </TouchableOpacity>
 
                     <Image
 
                     style={{
                         height:30,
                         width:30,
+                        tintColor:'#f67953'
                     }}
-                    source={require('./src/images/signalIcon.png')}
+                    source={require('../../images/signalIcon.png')}
 
 
                     />
@@ -663,28 +677,36 @@ class App extends Component {
                     justifyContent:'space-around'
 
                 }}>
-
+                    <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('Training')}
+                    >
                     <Image
 
                     style={{
                         height:30,
                         width:30,
                     }}
-                    source={require('./src/images/dumbellIcon.png')}
+                    source={require('../../images/dumbellIcon.png')}
 
 
                     />
+                    </TouchableOpacity>
 
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('TrainerProfile')}
+                    >
                     <Image
 
                         style={{
-                            height:30,
-                            width:30,
+                            height:20,
+                            width:20,
+                            tintColor:'gray'
                         }}
-                        source={require('./src/images/signalIcon.png')}
+                        source={require('../../images/profile.png')}
 
 
                     />
+                    </TouchableOpacity>
 
                 </View>
                

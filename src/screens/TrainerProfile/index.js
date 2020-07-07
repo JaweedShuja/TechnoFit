@@ -9,27 +9,179 @@ import {
     TextInput
  } from 'react-native'
  import SwitchToggle from "react-native-switch-toggle";
+ import Drawer from 'react-native-drawer'
 
 
  
 
 class App extends Component {
+    static navigationOptions = {
+        headerShown : null
+    }
     constructor(props) {
         super(props);
         this.state = {
-          
+            menuItems:[
+                'Dashboard',
+                'Goal',
+                'Training',
+                'Profile',
+                'Notifications',
+                'My Videos',
+                'Photos',
+                'Statistics',
+                'Settings',
+            ]
         };
 
        
       }
      
-    
+      closeControlPanel = () => {
+        this._drawer.close()
+        };
+        openControlPanel = () => {
+        this._drawer.open()
+        };
    render() {
-      
+    let items = []
+
+    items.push(
+        <View
+          style={{
+              flex:8,
+              justifyContent:'space-around',
+          }}
+        >
+            {
+                this.state.menuItems.map((item, index) => {
+                return <TouchableOpacity
+                
+                onPress={() => { item == 'Profile' ?  this.closeControlPanel() :
+                    this.props.navigation.navigate(`${item}`)
+                }}
+                
+                  style={{flexDirection:'row'}}
+                >
+                    <Image
+
+                      style={{
+                          height:20, width:20, marginLeft:20
+                      }}
+                      source={require('../../images/dashboardIcon.png')}
+
+
+                    />
+                    <Text
+                      style={{
+                          fontSize:16,
+                          fontWeight:'bold',
+                          marginLeft:10,
+                      }}
+                    >
+                        {item}
+                    </Text>
+
+            </TouchableOpacity>})
+                }
+            
+
+        </View>
+    )
  
        return (
         <View style={styles.container}> 
         {/* header */}
+        <Drawer
+            type="overlay"
+             content={<View style={{ flex:1, height:'100%', backgroundColor:'white'}}>
+            <View 
+                style={{
+                    flex:1, 
+                    alignItems:'center', 
+                    flexDirection:'row',
+                }}>
+
+            
+            
+
+                
+                <Text style={{
+                    color:'#44474f',
+                    fontSize:25,
+                    fontWeight:'bold',
+                    marginLeft:20
+                }}>
+                    Menu
+
+                </Text>
+
+                
+               
+                
+
+                
+                    <TouchableOpacity 
+                        onPress={() => this.closeControlPanel()}
+                    style={{ 
+                        position:'absolute',
+                        right:10,
+                        height:30,
+                        width:30,
+                        backgroundColor:'#f1f0f3', 
+                        borderRadius:70,
+                        alignItems:'center',
+                        justifyContent:'center',
+                        }}>
+
+                        <Image
+                            style={{height:15, width:15}}
+                            source={require('../../images/cross.png')}
+                        />
+                            
+                    
+                </TouchableOpacity>
+               
+
+            </View>
+           
+            <View style={{flex:8, paddingBottom:10}}>
+              {items}
+              
+              <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Login')}
+                style={{
+                    flex:1,
+                    backgroundColor:'#ff714a',
+                    margin:15,
+                    borderRadius:5,
+                    alignItems:'center',
+                    justifyContent:'center',
+                }}
+              >
+                  <Text
+                    style={{fontSize:18, fontWeight:'bold', color:'white'}}
+                  >
+                      Log Out
+
+                  </Text>
+
+              </TouchableOpacity>
+            </View>
+             
+             
+
+         </View>}
+            // tapToClose={true}
+            openDrawerOffset={0}
+            panCloseMask={0.2}
+            closedDrawerOffset={-3}
+            side={'right'}
+            tweenHandler={(ratio) => ({
+                main: { opacity:(2-ratio)/2 }
+            })}
+            ref={(ref) => this._drawer = ref}
+        >
             <View 
                 style={{
                     flex:1, 
@@ -60,13 +212,15 @@ class App extends Component {
                         width:25, 
                     
                     }}
-                    source={require('./src/images/54810svg.png')}
+                    source={require('../../images/54810svg.png')}
                     />
                 </TouchableOpacity>
                 
 
                 
-                    <TouchableOpacity style={{ position:'absolute',
+                    <TouchableOpacity 
+                    onPress={() => this.openControlPanel()}
+                    style={{ position:'absolute',
                     right:10}}>
                     <Image
                     style={{
@@ -74,7 +228,7 @@ class App extends Component {
                         width:25, 
                     
                     }}
-                    source={require('./src/images/drawer.png')}
+                    source={require('../../images/drawer.png')}
                     />
                 </TouchableOpacity>
                
@@ -107,7 +261,7 @@ class App extends Component {
                             <Image
                                 style={{height:50,width:63,}}
 
-                                source={require('./src/images/notfound.png')}
+                                source={require('../../images/notfound.png')}
 
                             />
 
@@ -300,7 +454,7 @@ class App extends Component {
                                 height:20,
                                 width:25,
                             }}
-                            source={require('./src/images/notfound.png')}
+                            source={require('../../images/notfound.png')}
 
                         />
 
@@ -359,7 +513,7 @@ class App extends Component {
                                 height:20,
                                 width:25,
                             }}
-                            source={require('./src/images/notfound.png')}
+                            source={require('../../images/notfound.png')}
 
                         />
 
@@ -418,7 +572,7 @@ class App extends Component {
                                 height:20,
                                 width:25,
                             }}
-                            source={require('./src/images/notfound.png')}
+                            source={require('../../images/notfound.png')}
 
                         />
 
@@ -488,7 +642,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -508,7 +662,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -528,7 +682,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -555,7 +709,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -575,7 +729,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -595,7 +749,7 @@ class App extends Component {
                                             height:40,
                                             width:50
                                         }}
-                                        source={require('./src/images/notfound.png')}
+                                        source={require('../../images/notfound.png')}
 
                                         />
 
@@ -621,6 +775,9 @@ class App extends Component {
                     justifyContent:'space-around'
 
                 }}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Dashboard')}
+                    >
 
                     <Image
 
@@ -628,21 +785,26 @@ class App extends Component {
                             height:30,
                             width:30,
                         }}
-                        source={require('./src/images/dashboardIcon.png')}
+                        source={require('../../images/dashboardIcon.png')}
 
 
                     />
+                    </TouchableOpacity>
 
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate('Statistics')}
+                        >
                     <Image
 
                     style={{
                         height:30,
                         width:30,
                     }}
-                    source={require('./src/images/signalIcon.png')}
+                    source={require('../../images/signalIcon.png')}
 
 
                     />
+                    </TouchableOpacity>
 
                 </View>
 
@@ -657,27 +819,36 @@ class App extends Component {
 
                 }}>
 
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('Training')}
+                >
                     <Image
 
                     style={{
                         height:30,
                         width:30,
                     }}
-                    source={require('./src/images/dumbellIcon.png')}
+                    source={require('../../images/dumbellIcon.png')}
 
 
                     />
+                    </TouchableOpacity>
 
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('TrainerProfile')}
+                    >
                     <Image
 
                         style={{
-                            height:30,
-                            width:30,
+                            height:20,
+                            width:20,
+                            tintColor:'#f67953'
                         }}
-                        source={require('./src/images/signalIcon.png')}
+                        source={require('../../images/profile.png')}
 
 
                     />
+                    </TouchableOpacity>
 
                 </View>
                
@@ -714,7 +885,7 @@ class App extends Component {
                 </TouchableOpacity>
 
             </View>
-            
+            </Drawer>
         </View>
        );
     }

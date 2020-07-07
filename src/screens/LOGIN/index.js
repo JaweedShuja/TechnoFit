@@ -13,6 +13,9 @@ const Percentage = 66;
 
  
 class App extends Component {
+    static navigationOptions = {
+        headerShown : null
+    }
     constructor(props){
         super(props)
 
@@ -104,6 +107,7 @@ class App extends Component {
             </View>
 
             <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Profile')}
                 style={{
                     height:50,
                     width:'85%',

@@ -10,16 +10,24 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
     "react": "16.11.0",
     "react-circular-progressbar": "^2.0.3",
     "react-native": "0.62.2",
     "react-native-chart-kit": "^5.6.1",
     "react-native-d3multiline-chart": "^1.0.19",
+    "react-native-drawer": "^2.5.1",
+    "react-native-gesture-handler": "^1.6.1",
     "react-native-progress-circle": "^2.1.0",
+    "react-native-reanimated": "^1.9.0",
+    "react-native-safe-area-context": "^3.0.7",
+    "react-native-screens": "^2.9.0",
     "react-native-svg": "^12.1.0",
     "react-native-svg-charts": "^5.4.0",
     "react-native-swiper": "^1.6.0",
-    "react-native-switch-toggle": "^1.1.4"
+    "react-native-switch-toggle": "^1.1.4",
+    "react-navigation": "^4.4.0",
+    "react-navigation-stack": "^2.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",

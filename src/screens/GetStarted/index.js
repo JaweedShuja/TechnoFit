@@ -12,6 +12,9 @@ const Percentage = 66;
 
  
 class App extends Component {
+    static navigationOptions = {
+        headerShown : null
+    }
    render() {
        return (
         <View style={styles.container}> 
@@ -53,6 +56,7 @@ class App extends Component {
 
                     
             <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('EnterName')}
                 style={{
                     height:50,
                     width:'85%',
@@ -76,6 +80,7 @@ class App extends Component {
 
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Login')}
                 style={{
                     height:50,
                     width:'85%',
@@ -125,7 +130,7 @@ class App extends Component {
 
                     <Image
                         style={{height:30, width:30, marginLeft:10}}
-                        source={require('./src/images/facebookIcon.png')}
+                        source={require('../../images/facebookIcon.png')}
 
                     />
             </TouchableOpacity>
