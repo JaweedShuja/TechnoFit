@@ -10,13 +10,15 @@ import {
  import { LineChart, Grid } from 'react-native-svg-charts'
  import * as shape from 'd3-shape'
 import ProgressCircle from 'react-native-progress-circle'
+import MySwiper from 'react-native-swiper'
 import Drawer from 'react-native-drawer'
+
 
  
 
 class App extends Component {
     static navigationOptions = {
-        headerShown :null
+        headerShown:null
     }
     constructor(props){
         super(props)
@@ -90,8 +92,7 @@ class App extends Component {
  
        return (
         <View style={styles.container}> 
-        {/* header */}
-        <Drawer
+         <Drawer
             type="overlay"
              content={<View style={{ flex:1, height:'100%', backgroundColor:'white'}}>
             <View 
@@ -181,34 +182,33 @@ class App extends Component {
             })}
             ref={(ref) => this._drawer = ref}
         >
+        {/* header */}
             <View 
                 style={{
                     flex:1, 
                     alignItems:'center', 
-                    flexDirection:'row'
+                    flexDirection:'row',
                 }}>
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.goBack()}
-                    >
-                <Image
-                    style={{
-                        height:40,
-                        width:40,
-
-                    }}
-                    source={require('../../images/backIcon.png')}
-                
-                />
-                </TouchableOpacity>
+                <View>
                 <Text style={{
                     color:'#44474f',
-                    fontSize:30,
+                    fontSize:16,
                     fontWeight:'bold', 
                     marginLeft:15,
                 }}>
-                    All Courses
+                    Hey! Welcome
 
                 </Text>
+                <Text style={{
+                    color:'#44474f',
+                    fontSize:25,
+                    fontWeight:'bold', 
+                    marginLeft:15,
+                }}>
+                    Jhon!
+
+                </Text>
+                </View>
 
                 <TouchableOpacity 
                     onPress={() => this.props.navigation.navigate('Search')}
@@ -224,7 +224,7 @@ class App extends Component {
                         source={require('../../images/search.png')}
                     />  
                 </TouchableOpacity>
-                    <TouchableOpacity
+                    <TouchableOpacity 
                         onPress={() => this.openControlPanel()}
                     style={{ position:'absolute',
                     right:10}}>
@@ -242,78 +242,73 @@ class App extends Component {
             </View>
            
             <View style={{flex:8, paddingBottom:10, marginHorizontal:5}}>
-                <ScrollView
-                showsVerticalScrollIndicator={false}
-                >
+               
+           <View style={{
+               flex:6
+           }}>
+                <MySwiper
+          
+            dotStyle={{height:5, width:5, borderRadius:70, marginBottom:20, backgroundColor:'lightgray'}}
+            activeDotStyle={{height:5, width:5, borderRadius:70, marginBottom:20, backgroundColor:'black'}}
+            style={{}} showsButtons={false}
+            >
+               
+                     <View style={{
+                         height:'70%', 
+                         backgroundColor:'white', 
+                         width:'90%', 
+                         borderRadius:10, 
+                         alignSelf:'center',
+                         marginTop:10,
+                         alignItems:'center',
+                         justifyContent:'center'
+                    }}>
+                         <Image
+                                style={{
+                                    height:66,
+                                    width:83.2,
+                                }}
+                                source={require('../../images/notfound.png')}
+                            />
+
+            
+                    </View>
+            
+
+            
                     <View style={{
-                        width:'90%',
-                        height:230,
-                        backgroundColor:'white',
+                        height:'70%', 
+                        backgroundColor:'white', 
+                        width:'90%', 
+                        borderRadius:10,
                         alignSelf:'center',
-                        borderRadius:10, 
                         marginTop:10,
+                        alignItems:'center',
+                         justifyContent:'center'
                     }}>
-                        <View style={{
-                            flex:4,
-                            alignItems:'center',
-                            justifyContent:'center',
-                        }}>
-                            <Image
+                        <Image
                                 style={{
                                     height:66,
                                     width:83.2,
                                 }}
                                 source={require('../../images/notfound.png')}
                             />
-
-                        </View>
-                        <View style={{
-                            flex:2,
-                            
-                        }}>
-                            <View style={{width:'90%', height:2, backgroundColor:'lightgray', alignSelf:'center'}}>
-
-                            </View>
-                            <View style={{
-                                margin:15
-                            }}>
-
-                                <Text style={{
-                                    fontSize:17,
-                                    fontWeight:'bold',
-                                }}>
-                                    Cardio Exarcise
-
-                                </Text>
-
-                                <Text
-                                    style={{
-                                        fontSize:14,
-                                        fontWeight:'bold',
-                                        color:'lightgray', 
-                                    }}
-                                >
-                                    110 Hours
-                                </Text>
-                            </View>
-
-                        </View>
-
+            
                     </View>
+
+
+                   
                     <View style={{
-                        width:'90%',
-                        height:230,
-                        backgroundColor:'white',
+                        height:'70%', 
+                        backgroundColor:'white', 
+                        width:'90%', 
+                        borderRadius:10,
                         alignSelf:'center',
-                        borderRadius:10, 
-                        marginTop:15,
+                        marginTop:10,
+                        alignItems:'center',
+                         justifyContent:'center'
                     }}>
-                         <View style={{
-                            flex:4,
-                            alignItems:'center',
-                            justifyContent:'center',
-                        }}>
-                            <Image
+                        <Image
                                 style={{
                                     height:66,
                                     width:83.2,
@@ -321,54 +316,21 @@ class App extends Component {
                                 source={require('../../images/notfound.png')}
                             />
 
-                        </View>
-                        <View style={{
-                            flex:2,
                             
-                        }}>
-                            <View style={{width:'90%', height:2, backgroundColor:'lightgray', alignSelf:'center'}}>
-
-                            </View>
-                            <View style={{
-                                margin:15
-                            }}>
-
-                                <Text style={{
-                                    fontSize:17,
-                                    fontWeight:'bold',
-                                }}>
-                                    Cardio Exarcise
-
-                                </Text>
-
-                                <Text
-                                    style={{
-                                        fontSize:14,
-                                        fontWeight:'bold',
-                                        color:'lightgray', 
-                                    }}
-                                >
-                                    110 Hours
-                                </Text>
-                            </View>
-
-                        </View>
 
                     </View>
+
                     <View style={{
-                        width:'90%',
-                        height:230,
-                        backgroundColor:'white',
+                        height:'70%', 
+                        backgroundColor:'white', 
+                        width:'90%', 
+                        borderRadius:10,
                         alignSelf:'center',
-                        borderRadius:10, 
-                        marginTop:15,
+                        marginTop:10,
+                        alignItems:'center',
+                        justifyContent:'center'
                     }}>
-                         <View style={{
-                            flex:4,
-                            alignItems:'center',
-                            justifyContent:'center',
-                        }}>
-                            <Image
+                        <Image
                                 style={{
                                     height:66,
                                     width:83.2,
@@ -376,44 +338,145 @@ class App extends Component {
                                 source={require('../../images/notfound.png')}
                             />
 
-                        </View>
-                        <View style={{
-                            flex:2,
-                            
-                        }}>
-                            <View style={{width:'90%', height:2, backgroundColor:'lightgray', alignSelf:'center'}}>
+                    </View>
 
-                            </View>
-                            <View style={{
-                                margin:15
-                            }}>
-
-                                <Text style={{
-                                    fontSize:17,
-                                    fontWeight:'bold',
-                                }}>
-                                    Cardio Exarcise
-
-                                </Text>
-
-                                <Text
-                                    style={{
-                                        fontSize:14,
-                                        fontWeight:'bold',
-                                        color:'lightgray', 
-                                    }}
-                                >
-                                    110 Hours
-                                </Text>
-                            </View>
-
-                        </View>
+                    <View style={{
+                        height:'70%', 
+                        backgroundColor:'white', 
+                        width:'90%', 
+                        borderRadius:10,
+                        alignSelf:'center',
+                        marginTop:10,
+                        alignItems:'center',
+                         justifyContent:'center'
+                    }}>
+                        <Image
+                                style={{
+                                    height:66,
+                                    width:83.2,
+                                }}
+                                source={require('../../images/notfound.png')}
+                            />
 
                     </View>
-                    
+            </MySwiper>
 
-                </ScrollView>
-              
+           </View>
+              <View style={{flex:4}}>
+
+                  <Text
+                    style={{
+                        fontSize:18,
+                        fontWeight:'bold',
+                        margin:10
+                    }}
+                  >
+                      Popular Training
+                  </Text>
+
+                  <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                  >
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('FlowYoga')}
+                      style={{
+                          height:'92%',
+                          width:200,
+                          marginBottom:10,
+                          marginLeft:10,
+                      }}>
+                          <View
+                            style={{
+                                height:'75%',
+                                width:'90%', 
+                                backgroundColor:'white',
+                                borderRadius:10,
+                                alignItems:'center',
+                                justifyContent:'center'
+
+                            }}
+                          >
+                              <Image
+                                style={{
+                                    height:39.6,
+                                    width:49.92,
+                                }}
+                                source={require('../../images/notfound.png')}
+                            />
+
+                            
+                          </View>
+                          <Text
+                                style={{
+                                    fontWeight:'bold',
+                                }}
+                            >
+                                Legs & Abs
+
+                            </Text>
+                            <Text
+                                style={{color:'gray'}}
+                            >
+                                Community
+
+                            </Text>
+                              
+
+
+                      </TouchableOpacity>
+
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('FlowYoga')}
+                      style={{
+                          height:'92%',
+                          width:200,
+                          marginBottom:10,
+                          marginLeft:10,
+                      }}>
+                          <View
+                            style={{
+                                height:'75%',
+                                width:'90%', 
+                                backgroundColor:'white',
+                                borderRadius:10,
+                                alignItems:'center',
+                                justifyContent:'center'
+
+                            }}
+                          >
+                              <Image
+                                style={{
+                                    height:39.6,
+                                    width:49.92,
+                                }}
+                                source={require('../../images/notfound.png')}
+                            />
+
+                            
+                          </View>
+                          <Text
+                                style={{
+                                    fontWeight:'bold',
+                                }}
+                            >
+                                Legs & Abs
+
+                            </Text>
+                            <Text
+                                style={{color:'gray'}}
+                            >
+                                Community
+
+                            </Text>
+                              
+
+
+                      </TouchableOpacity>
+
+                  </ScrollView>
+
+              </View>
 
             </View>
             <View style={{flex:1, backgroundColor:'white'}}>
@@ -425,10 +488,10 @@ class App extends Component {
                     justifyContent:'space-around'
 
                 }}>
+
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('Dashboard')}
                     >
-
                     <Image
 
                         style={{
@@ -442,7 +505,7 @@ class App extends Component {
                     </TouchableOpacity>
 
                         <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Statistics')}
+                        onPress={() => this.props.navigation.navigate('Statistics')}
                         >
                     <Image
 
@@ -469,9 +532,9 @@ class App extends Component {
 
                 }}>
 
-                <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Training')}
-                >
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Training')}
+                    >
                     <Image
 
                     style={{
@@ -483,7 +546,6 @@ class App extends Component {
 
                     />
                     </TouchableOpacity>
-
 
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('Profile')}

@@ -152,7 +152,7 @@ class App extends Component {
             </View>
 
             <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Profile')}
+            onPress={() => this.props.navigation.navigate('Home')}
                 style={{
                     height:50,
                     width:'85%',

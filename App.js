@@ -614,10 +614,13 @@ import Dashboard from './src/screens/Dashboard'
 import Menu from './src/screens/Menu'
 import EnterName from './src/screens/EnterName'
 import Statistics from './src/screens/Statistics'
-import Profile from './src/screens/Profile'
+import Home from './src/screens/Home'
 import Training from './src/screens/Training'
-import TrainerProfile from './src/screens/TrainerProfile'
+import Profile from './src/screens/Profile'
 import Search from './src/screens/Search'
+import AllCourses from './src/screens/AllCourses'
+import Settings from './src/screens/Settings'
+import FlowYoga from './src/screens/FlowYoga'
 
 const RootStack = createStackNavigator(
   {
@@ -651,11 +654,20 @@ const RootStack = createStackNavigator(
     Training:{
       screen: Training
     },
-    TrainerProfile:{
-      screen : TrainerProfile
-    },
     Search:{
       screen : Search
+    },
+    Home:{
+      screen :Home
+    },
+    AllCourses:{
+      screen:AllCourses
+    },
+    Settings:{
+      screen: Settings
+    },
+    FlowYoga:{
+      screen: FlowYoga
     }
   },
   {

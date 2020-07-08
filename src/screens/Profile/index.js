@@ -5,23 +5,21 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    TextInput
  } from 'react-native'
- import { LineChart, Grid } from 'react-native-svg-charts'
- import * as shape from 'd3-shape'
-import ProgressCircle from 'react-native-progress-circle'
-import MySwiper from 'react-native-swiper'
-import Drawer from 'react-native-drawer'
+ import SwitchToggle from "react-native-switch-toggle";
+ import Drawer from 'react-native-drawer'
 
 
  
 
 class App extends Component {
     static navigationOptions = {
-        headerShown:null
+        headerShown : null
     }
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props);
         this.state = {
             menuItems:[
                 'Dashboard',
@@ -34,9 +32,12 @@ class App extends Component {
                 'Statistics',
                 'Settings',
             ]
-        }
-    }
-    closeControlPanel = () => {
+        };
+
+       
+      }
+     
+      closeControlPanel = () => {
         this._drawer.close()
         };
         openControlPanel = () => {
@@ -56,9 +57,9 @@ class App extends Component {
                 this.state.menuItems.map((item, index) => {
                 return <TouchableOpacity
                 
-                onPress={() =>  
+                onPress={() => { item == 'Profile' ?  this.closeControlPanel() :
                     this.props.navigation.navigate(`${item}`)
-                }
+                }}
                 
                   style={{flexDirection:'row'}}
                 >
@@ -90,7 +91,8 @@ class App extends Component {
  
        return (
         <View style={styles.container}> 
-         <Drawer
+        {/* header */}
+        <Drawer
             type="overlay"
              content={<View style={{ flex:1, height:'100%', backgroundColor:'white'}}>
             <View 
@@ -180,50 +182,44 @@ class App extends Component {
             })}
             ref={(ref) => this._drawer = ref}
         >
-        {/* header */}
             <View 
                 style={{
                     flex:1, 
                     alignItems:'center', 
                     flexDirection:'row',
                 }}>
-                <View>
-                <Text style={{
-                    color:'#44474f',
-                    fontSize:16,
-                    fontWeight:'bold', 
-                    marginLeft:15,
-                }}>
-                    Hey! Welcome
 
-                </Text>
+            
+            
+
+                
                 <Text style={{
                     color:'#44474f',
                     fontSize:25,
-                    fontWeight:'bold', 
-                    marginLeft:15,
+                    fontWeight:'bold',
+                    marginLeft:10
                 }}>
-                    Jhon!
+                    Profile
 
                 </Text>
-                </View>
 
-                <TouchableOpacity 
-                    onPress={() => this.props.navigation.navigate('Search')}
-                style={{
-                    position:'absolute',
-                    right:50
-                }}>
+                
+                <TouchableOpacity style={{ position:'absolute',
+                    right:50}}>
                     <Image
-                        style={{
-                            height:25, 
-                            width:25, 
-                        }}
-                        source={require('../../images/search.png')}
-                    />  
+                    style={{
+                        height:25, 
+                        width:25, 
+                    
+                    }}
+                    source={require('../../images/54810svg.png')}
+                    />
                 </TouchableOpacity>
+                
+
+                
                     <TouchableOpacity 
-                        onPress={() => this.openControlPanel()}
+                    onPress={() => this.openControlPanel()}
                     style={{ position:'absolute',
                     right:10}}>
                     <Image
@@ -240,238 +236,535 @@ class App extends Component {
             </View>
            
             <View style={{flex:8, paddingBottom:10, marginHorizontal:5}}>
-               
-           <View style={{
-               flex:6
-           }}>
-                <MySwiper
-          
-            dotStyle={{height:5, width:5, borderRadius:70, marginBottom:20, backgroundColor:'lightgray'}}
-            activeDotStyle={{height:5, width:5, borderRadius:70, marginBottom:20, backgroundColor:'black'}}
-            style={{}} showsButtons={false}
-            >
-               
-                     <View style={{
-                         height:'70%', 
-                         backgroundColor:'white', 
-                         width:'90%', 
-                         borderRadius:10, 
-                         alignSelf:'center',
-                         marginTop:10,
-                         alignItems:'center',
-                         justifyContent:'center'
-                    }}>
-                         <Image
-                                style={{
-                                    height:66,
-                                    width:83.2,
-                                }}
+               <View
+                style={{
+                    width:'95%',
+                    height:130,
+                    alignSelf:'center',
+                    flexDirection:'row',
+                }}
+               >
+                   <View
+                    style={{flex:2}}>
+
+                        <View
+                            style={{
+                                height:130,
+                                width:130,
+                                backgroundColor:'white',
+                                borderRadius:10, 
+                                
+                                alignItems:'center',
+                                justifyContent:'center',
+                            }}
+                        >
+                            <Image
+                                style={{height:50,width:63,}}
+
                                 source={require('../../images/notfound.png')}
+
                             />
 
-            
-                    </View>
-            
+                        </View>
 
-            
-                    <View style={{
-                        height:'70%', 
-                        backgroundColor:'white', 
-                        width:'90%', 
-                        borderRadius:10,
-                        alignSelf:'center',
-                        marginTop:10,
-                        alignItems:'center',
-                         justifyContent:'center'
-                    }}>
-                        <Image
+                   </View>
+                  
+                   <View
+                    style={{
+                        flex:3,
+                        justifyContent:'space-around'
+                    }}
+                   >
+                       <Text
+                        style={{
+                            fontSize:18, 
+                            fontWeight:'bold',
+                            marginLeft:20,
+                        }}
+                       >
+
+                           John Anderson
+                       </Text>
+
+                       <View
+                        style={{
+                            height:50,
+                            marginHorizontal:20,
+                            flexDirection:'row',
+                        }}
+                       
+                       >
+                           <View
+                         style={{
+                             flex:1,
+                             justifyContent:'center'
+                         }}  
+                         >
+                               <Text
                                 style={{
-                                    height:66,
-                                    width:83.2,
+                                    fontWeight:'bold',
+
                                 }}
-                                source={require('../../images/notfound.png')}
-                            />
-            
-                    </View>
+                               >
+                                 2931
+                             </Text>
+                             <Text
+                                style={{
+                                    fontSize:12,
+                                    color:'gray'
+                                    
+                                }}
+                               >
+                                 Followers
+                             </Text>
+
+                           </View>
+                           <View
+                         style={{
+                             flex:1,
+                             justifyContent:'center'
+                         }}  
+                         >
+                             <Text
+                                style={{
+                                    fontWeight:'bold',
+
+                                }}
+                               >
+                                 215
+                             </Text>
+                             <Text
+                                style={{
+                                    fontSize:12,
+                                    color:'gray'
+                                    
+                                }}
+                               >
+                                 Followings
+                             </Text>
+                           
+
+                           </View>
+
+                       </View>
+
+                       <View
+                        style={{
+                            height:3,
+                            marginHorizontal:20,
+                            flexDirection:'row',
+                        }}
+                       >
+                           <View
+                            style={{
+                                flex:3,
+                                height:'100%',
+                                backgroundColor:'red'
+                            }}
+                           >
+
+                           </View>
+                           <View
+                            style={{
+                                flex:1,
+                                height:'100%',
+                                backgroundColor:'gray'
+                            }}
+                           >
+
+                           </View>
+
+                       </View>
+
+                       <View
+                        style={{
+                            flexDirection:'row',
+                            marginHorizontal:20
+                        }}
+                       >
+                           <Text
+                           style={{
+                               fontWeight:'bold',
+                               
+                           }}
+                           >
+                               Skilled
+                           </Text>
+
+                           <Text
+                            style={{
+                                fontSize:12,  color:'gray', 
+                                alignSelf:'center',
+                                position:'absolute',
+                                right:0
+                            }}  
+                        >
+                            110 Hours
+
+                           </Text>
+
+                       </View>
+
+                   </View>
 
 
                    
-                    <View style={{
-                        height:'70%', 
-                        backgroundColor:'white', 
-                        width:'90%', 
-                        borderRadius:10,
-                        alignSelf:'center',
-                        marginTop:10,
-                        alignItems:'center',
-                         justifyContent:'center'
-                    }}>
-                        <Image
-                                style={{
-                                    height:66,
-                                    width:83.2,
-                                }}
-                                source={require('../../images/notfound.png')}
-                            />
 
-                            
+               </View>
 
-                    </View>
+               <Text
+                style={{
+                    fontSize:16,
+                    fontWeight:'bold',
+                    marginLeft:10,
+                    marginTop:10
+                }}
+               >
+                   Trainings
+               </Text>
 
-                    <View style={{
-                        height:'70%', 
-                        backgroundColor:'white', 
-                        width:'90%', 
-                        borderRadius:10,
-                        alignSelf:'center',
-                        marginTop:10,
-                        alignItems:'center',
-                        justifyContent:'center'
-                    }}>
-                        <Image
-                                style={{
-                                    height:66,
-                                    width:83.2,
-                                }}
-                                source={require('../../images/notfound.png')}
-                            />
+               <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+               >
 
-                    </View>
-
-                    <View style={{
-                        height:'70%', 
-                        backgroundColor:'white', 
-                        width:'90%', 
-                        borderRadius:10,
-                        alignSelf:'center',
-                        marginTop:10,
-                        alignItems:'center',
-                         justifyContent:'center'
-                    }}>
-                        <Image
-                                style={{
-                                    height:66,
-                                    width:83.2,
-                                }}
-                                source={require('../../images/notfound.png')}
-                            />
-
-                    </View>
-            </MySwiper>
-
-           </View>
-              <View style={{flex:4}}>
-
-                  <Text
+                <View
                     style={{
-                        fontSize:18,
-                        fontWeight:'bold',
-                        margin:10
+                        height:70,
+                        width:200,
+                        marginLeft:10,
+                        marginTop:10,
+                        flexDirection:'row',
                     }}
-                  >
-                      Popular Training
-                  </Text>
+                >
 
-                  <ScrollView
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                  >
-                      <View style={{
-                          height:'92%',
-                          width:200,
-                          marginBottom:10,
-                          marginLeft:10,
-                      }}>
-                          <View
+                    <View
+                        style={{
+                            height:60,
+                            width:60,
+                            backgroundColor:'white',
+                            alignSelf:'center',
+                            borderRadius:10,
+                            alignItems:'center',
+                            justifyContent:'center'
+                        }}
+                    >
+                        <Image
                             style={{
-                                height:'75%',
-                                width:'90%', 
-                                backgroundColor:'white',
-                                borderRadius:10,
-                                alignItems:'center',
-                                justifyContent:'center'
-
+                                height:20,
+                                width:25,
                             }}
-                          >
-                              <Image
-                                style={{
-                                    height:39.6,
-                                    width:49.92,
-                                }}
-                                source={require('../../images/notfound.png')}
-                            />
+                            source={require('../../images/notfound.png')}
+
+                        />
+
+                    </View>
+                    <View
+
+                            style={{marginLeft:10, alignSelf:'center'}}
+                    >
+                        <Text
+                            style={{
+                                fontWeight:'bold',
+                                fontSize:16
+                            }}
+
+                        >
+                            Cardio Exercise
+
+                        </Text>
+                        <Text
+                            style={{
+                                color:'gray'
+                            }}
+
+                        >
+                            5 days ago
+
+                        </Text>
+
+                    </View>
+
+                </View>
+
+                <View
+                    style={{
+                        height:70,
+                        width:200,
+                        marginLeft:10,
+                        marginTop:10,
+                        flexDirection:'row',
+                    }}
+                >
+
+                    <View
+                        style={{
+                            height:60,
+                            width:60,
+                            backgroundColor:'white',
+                            alignSelf:'center',
+                            borderRadius:10,
+                            alignItems:'center',
+                            justifyContent:'center'
+                        }}
+                    >
+                        <Image
+                            style={{
+                                height:20,
+                                width:25,
+                            }}
+                            source={require('../../images/notfound.png')}
+
+                        />
+
+                    </View>
+                    <View
+
+                            style={{marginLeft:10, alignSelf:'center'}}
+                    >
+                        <Text
+                            style={{
+                                fontWeight:'bold',
+                                fontSize:16
+                            }}
+
+                        >
+                            Cardio Exercise
+
+                        </Text>
+                        <Text
+                            style={{
+                                color:'gray'
+                            }}
+
+                        >
+                            5 days ago
+
+                        </Text>
+
+                    </View>
+
+                </View>
+
+                <View
+                    style={{
+                        height:70,
+                        width:200,
+                        marginLeft:10,
+                        marginTop:10,
+                        flexDirection:'row',
+                    }}
+                >
+
+                    <View
+                        style={{
+                            height:60,
+                            width:60,
+                            backgroundColor:'white',
+                            alignSelf:'center',
+                            borderRadius:10,
+                            alignItems:'center',
+                            justifyContent:'center'
+                        }}
+                    >
+                        <Image
+                            style={{
+                                height:20,
+                                width:25,
+                            }}
+                            source={require('../../images/notfound.png')}
+
+                        />
+
+                    </View>
+                    <View
+
+                            style={{marginLeft:10, alignSelf:'center'}}
+                    >
+                        <Text
+                            style={{
+                                fontWeight:'bold',
+                                fontSize:16
+                            }}
+
+                        >
+                            Cardio Exercise
+
+                        </Text>
+                        <Text
+                            style={{
+                                color:'gray'
+                            }}
+
+                        >
+                            5 days ago
+
+                        </Text>
+
+                    </View>
+
+                </View>
+
+
+
+               </ScrollView>
+
+               <Text
+                style={{
+                    fontSize:16,
+                    fontWeight:'bold',
+                    marginLeft:10
+                }}
+               >
+                   Photos
+
+
+               </Text>
+
+               <ScrollView
+                showsVerticalScrollIndicator={false}
+               >
+
+                            <View
+                                style={{flexDirection:'row', height:120}}
+                            >
+                                <View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View><View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View><View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View>
+
+                            </View>
+
+                            <View
+                                style={{flexDirection:'row', height:120}}
+                            >
+                                <View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View><View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View><View
+                                    style={{flex:1,
+                                        alignItems:'center',
+                                        justifyContent:'center'
+                                    }}
+                                >
+                                    <View
+                                        style={{height:90, width:90, borderRadius:10, alignItems:'center', justifyContent:'center', backgroundColor:'white'}}
+                                    >
+                                        <Image
+                                        style={{
+                                            height:40,
+                                            width:50
+                                        }}
+                                        source={require('../../images/notfound.png')}
+
+                                        />
+
+                                    </View>
+                                    
+                                </View>
+
+                            </View>
 
                             
-                          </View>
-                          <Text
-                                style={{
-                                    fontWeight:'bold',
-                                }}
-                            >
-                                Legs & Abs
 
-                            </Text>
-                            <Text
-                                style={{color:'gray'}}
-                            >
-                                Community
-
-                            </Text>
-                              
-
-
-                      </View>
-
-                      <View style={{
-                          height:'92%',
-                          width:200,
-                          marginBottom:10,
-                          marginLeft:10,
-                      }}>
-                          <View
-                            style={{
-                                height:'75%',
-                                width:'90%', 
-                                backgroundColor:'white',
-                                borderRadius:10,
-                                alignItems:'center',
-                                justifyContent:'center'
-
-                            }}
-                          >
-                              <Image
-                                style={{
-                                    height:39.6,
-                                    width:49.92,
-                                }}
-                                source={require('../../images/notfound.png')}
-                            />
-
-                            
-                          </View>
-                          <Text
-                                style={{
-                                    fontWeight:'bold',
-                                }}
-                            >
-                                Legs & Abs
-
-                            </Text>
-                            <Text
-                                style={{color:'gray'}}
-                            >
-                                Community
-
-                            </Text>
-                              
-
-
-                      </View>
-
-                  </ScrollView>
-
-              </View>
-
+               </ScrollView>
+                
+                
+              
             </View>
             <View style={{flex:1, backgroundColor:'white'}}>
                 <View style={{
@@ -482,10 +775,10 @@ class App extends Component {
                     justifyContent:'space-around'
 
                 }}>
-
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('Dashboard')}
                     >
+
                     <Image
 
                         style={{
@@ -499,7 +792,7 @@ class App extends Component {
                     </TouchableOpacity>
 
                         <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('Statistics')}
+                            onPress={() => this.props.navigation.navigate('Statistics')}
                         >
                     <Image
 
@@ -526,9 +819,9 @@ class App extends Component {
 
                 }}>
 
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('Training')}
-                    >
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('Training')}
+                >
                     <Image
 
                     style={{
@@ -542,14 +835,14 @@ class App extends Component {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('TrainerProfile')}
+                        onPress={() => this.props.navigation.navigate('Profile')}
                     >
                     <Image
 
                         style={{
                             height:20,
                             width:20,
-                            tintColor:'gray'
+                            tintColor:'#f67953'
                         }}
                         source={require('../../images/profile.png')}
 
@@ -572,7 +865,9 @@ class App extends Component {
                 alignItems:'center', 
                 justifyContent:'center'
             }}>
-                <TouchableOpacity style={{
+                <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('AllCourses')}
+                style={{
                      height:55,
                      width:55, 
                      backgroundColor:'#f67953',

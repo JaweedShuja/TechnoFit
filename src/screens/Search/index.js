@@ -924,7 +924,7 @@ class App extends Component {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('TrainerProfile')}
+                    onPress={() => this.props.navigation.navigate('Profile')}
                     >
                     <Image
 
@@ -954,7 +954,9 @@ class App extends Component {
                 alignItems:'center', 
                 justifyContent:'center'
             }}>
-                <TouchableOpacity style={{
+                <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('AllCourses')}
+                style={{
                      height:55,
                      width:55, 
                      backgroundColor:'#f67953',
